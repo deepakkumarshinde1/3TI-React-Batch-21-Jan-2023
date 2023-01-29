@@ -48,27 +48,3 @@ console.log(restaurantDetails);
 // local storage
 
 // ==> node JS
-
-// what is class => class is a set of prop methods
-// class is blue print of object
-// prop are like variables
-// methods are like function
-// this => keyword to provide a current instance
-function alert() {}
-alert("hello to js"); // core methods are overridden
-
-class Employee {
-  name = "deepakkkumar";
-  role = "trainer";
-
-  printEmployeeDetails() {
-    console.log(this.name, this.role);
-  }
-}
-
-console.log(this); // globally this refers to window object
-
-// object of class
-let employee = new Employee(); // external constructor
-
-employee.printEmployeeDetails();
