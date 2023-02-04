@@ -44,4 +44,19 @@ var btnId = getElement("#btn-id");
 // event add
 btnId.addEventListener("click", function () {
   console.log("click");
+
+  // btnId.style.backgroundColor = "red";
+  //btnId.classList.toggle("btn"); add() , remove()
+
+  // btnId.innerHTML = "Saving ...";
+  // btnId.disabled = true;
+  window.location.assign("https://www.google.com/");
+  // window.history
+  // window.cookies()
+  // window.localStorage()
 });
+
+console.log(this);
+// this(default) => global object => window (BOM)
+
+// BOM ==> DOM
