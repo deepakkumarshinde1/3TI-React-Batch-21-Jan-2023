@@ -1,0 +1,17 @@
+download git
+install git
+create a account git hub
+desktop add configuration --global
+
+git init
+git branch -M main
+git remote add origin https://github.com/deepakkumarshinde1/assignment-1.git
+git pull origin main (download code)
+
+(copy files in this folder)
+git status
+git add .
+git commit -m "assignment-1" (breakpoint)
+git push origin main (upload code on git repo)
+
+
