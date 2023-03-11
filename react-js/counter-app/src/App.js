@@ -1,21 +1,37 @@
 // import
 
 import { useState } from "react";
-import CounterClass from "./components/CounterClass";
 import CounterFunction from "./components/CounterFunction";
 
 // code
 function App() {
-  let [toggle, setToggle] = useState(true);
+  let [counterList, setCounterList] = useState([10, 20, 30, 50]);
+  // loop
+  let incCount = (index) => {
+    console.log("hello", index);
+    counterList[index] += 1;
+    setCounterList([...counterList]);
+  };
+  let resetCount = (index) => {
+    counterList[index] = 0;
+    setCounterList([...counterList]);
+  };
   return (
     <>
       <center>
-        <button onClick={() => setToggle(!toggle)}>Switch</button>
-        {toggle === true ? (
-          <CounterClass start={100} />
-        ) : (
-          <CounterFunction start={1} end={10} />
-        )}
+        {counterList.map((value, index) => {
+          return (
+            <CounterFunction
+              key={index}
+              count={value}
+              start={value}
+              end={value + 10}
+              incCount={incCount}
+              index={index}
+              resetCount={resetCount}
+            />
+          );
+        })}
       </center>
     </>
   );
