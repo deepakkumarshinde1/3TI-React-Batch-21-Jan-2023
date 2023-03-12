@@ -21,3 +21,13 @@ counter state
     1) props drolling (avoid)
     2) context api (useContext) small project
     3) redux (library) medium and large project
+
+
+
+Bootstrap => 3 Without flexbox & Jquery Support
+Bootstrap => 4 flexbox & Jquery Support  .ml-0  mr-0 
+Bootstrap => 5 flexbox  .ms-0 me-0
+          => 5.3
+
+plan bootstrap ==> independent 
+react-bootstrap ==>

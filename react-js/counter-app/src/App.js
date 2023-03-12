@@ -1,55 +1,31 @@
-// import
+import { useUserContext } from "./context/UserContext";
 
-import { useState } from "react";
-import CounterFunction from "./components/CounterFunction";
-
-// code
-function App() {
-  let [counterList, setCounterList] = useState([10, 20, 30, 50]);
-  // loop
-  let incCount = (index) => {
-    console.log("hello", index);
-    counterList[index] += 1;
-    setCounterList([...counterList]);
-  };
-  let resetCount = (index) => {
-    counterList[index] = 0;
-    setCounterList([...counterList]);
-  };
+const App = () => {
+  let { userList, userInput, getUserValue } = useUserContext();
   return (
     <>
       <center>
-        {counterList.map((value, index) => {
-          return (
-            <CounterFunction
-              key={index}
-              count={value}
-              start={value}
-              end={value + 10}
-              incCount={incCount}
-              index={index}
-              resetCount={resetCount}
-            />
-          );
-        })}
+        <input ref={userInput} type="text" placeholder="Enter User Name" />
+        <button onClick={getUserValue}>Search</button>
+        <hr />
+        <ul className="list-group col-4">
+          <li className="list-group-item">
+            Users
+            <span className="ms-2 badge bg-primary rounded-pill">
+              {userList.length}
+            </span>
+          </li>
+          {userList.map((userName, index) => {
+            return (
+              <li key={index} className="list-group-item">
+                {userName}
+              </li>
+            );
+          })}
+        </ul>
       </center>
     </>
   );
-}
+};
 
-// export
 export default App;
-
-// props =>
-// send data from parent component to child component
-// we need to use "props"
-// props i.e property
-// parent ===> child (one data binding)
-// props ==> is a {} (object)
-// which can gain data from outer world
-// props are read only in nature
-
-// state
-// handel data in component
-// state => alpha, number, boolean , array,object ,fun call
-// start are read & write
