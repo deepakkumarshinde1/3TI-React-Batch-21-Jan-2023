@@ -1,0 +1,33 @@
+download git
+install git
+create a account git hub
+desktop add configuration --global
+
+git init
+git branch -M main
+git remote add origin https://github.com/deepakkumarshinde1/assignment-1.git
+git pull origin main (download code)
+
+(copy files in this folder)
+git status
+git add .
+git commit -m "assignment-1" (breakpoint)
+git push origin main (upload code on git repo)
+
+
+app state
+counter state
+ to achieve single source of truth 
+    1) props drolling (avoid)
+    2) context api (useContext) small project
+    3) redux (library) medium and large project
+
+
+
+Bootstrap => 3 Without flexbox & Jquery Support
+Bootstrap => 4 flexbox & Jquery Support  .ml-0  mr-0 
+Bootstrap => 5 flexbox  .ms-0 me-0
+          => 5.3
+
+plan bootstrap ==> independent 
+react-bootstrap ==>

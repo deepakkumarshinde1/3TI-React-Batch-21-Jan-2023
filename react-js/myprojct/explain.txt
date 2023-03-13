@@ -1,0 +1,19 @@
+// quotes => api => next click a new quote
+
+HTML
+CSS
+JS
+    👍 click operation
+    👍 add fetch API
+    👍 get response
+    👍 extract data from response
+    👍 array ==> select a random quote from array (Math.random())
+    👍 index ==> get a single quote
+    👍 set that in a html with innerHTML or innerText
+
+
+Webpack
+    // all js file will be bundled under 1 js. file 
+    // all css file will be bundled under 1 css file
+
+2015 JS ==> ES5 babel SCSS ==> CSS , ES6 => ES5 
