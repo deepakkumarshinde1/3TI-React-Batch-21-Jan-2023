@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 // create context
 let UserContext = createContext({});
@@ -6,22 +6,66 @@ let UserContext = createContext({});
 // get provider
 export const UserContextProvider = (props) => {
   let { children } = props;
-  let userInput = useRef();
+  let [editIndex, setEditIndex] = useState(-1);
+  let [disabled, setDisabled] = useState(true);
+  let [user, setUser] = useState({
+    fName: "",
+    lName: "",
+  });
+
+  useEffect(() => {
+    if (user.fName.length >= 1 && user.lName.length >= 1) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [user]);
+
   let [userList, setUserList] = useState([]);
 
-  console.log(userList);
-  let getUserValue = () => {
-    let input = userInput.current;
-    // add data in array => array.push()
-    userList.push(input.value);
-    setUserList([...userList]);
-    userInput.current.value = "";
+  let saveUser = () => {
+    if (editIndex === -1) {
+      setUserList([...userList, { ...user }]);
+    } else {
+      userList[editIndex] = { ...user };
+      setUserList([...userList]);
+      setEditIndex(-1);
+    }
+    setUser({
+      fName: "",
+      lName: "",
+    });
   };
 
+  let inputChange = (event) => {
+    let { name, value } = event.target;
+    let _newUser = { ...user };
+    _newUser[name] = value;
+    setUser(_newUser);
+  };
+  let removeUser = (index) => {
+    userList.splice(index, 1); // delete data (index_pos,deleteCounter)
+    setUserList([...userList]);
+
+    // userList.slice ==> cut array
+    // pop
+    // shift
+    // splice
+  };
+  let edit = (index) => {
+    let editStudent = { ...userList[index] };
+    setUser(editStudent);
+    setEditIndex(index);
+  };
   let value = {
-    userInput,
-    getUserValue,
+    saveUser,
     userList,
+    inputChange,
+    user,
+    disabled,
+    removeUser,
+    edit,
+    editIndex,
   };
   // provider component
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
