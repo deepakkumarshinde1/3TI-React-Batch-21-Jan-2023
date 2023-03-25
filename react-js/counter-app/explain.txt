@@ -31,3 +31,16 @@ Bootstrap => 5 flexbox  .ms-0 me-0
 
 plan bootstrap ==> independent 
 react-bootstrap ==>
+
+React Routing === 6
+        BrowserRouting* ==> Inject Routing/Enable
+        Routes*
+        Route*
+        Outlet
+        Navigate*
+        Link*
+        NavLink*
+
+        useParams
+        useStringParams
+        useNavigate* (to navigate form js)

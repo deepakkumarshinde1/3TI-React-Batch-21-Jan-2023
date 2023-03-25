@@ -1,10 +1,12 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // create context
 let UserContext = createContext({});
 
 // get provider
 export const UserContextProvider = (props) => {
+  let navigate = useNavigate();
   let { children } = props;
   let [editIndex, setEditIndex] = useState(-1);
   let [disabled, setDisabled] = useState(true);
@@ -35,6 +37,9 @@ export const UserContextProvider = (props) => {
       fName: "",
       lName: "",
     });
+    navigate("/user"); // single page logic
+
+    // window.location.assign('/user')
   };
 
   let inputChange = (event) => {
@@ -56,6 +61,7 @@ export const UserContextProvider = (props) => {
     let editStudent = { ...userList[index] };
     setUser(editStudent);
     setEditIndex(index);
+    navigate("/");
   };
   let value = {
     saveUser,

@@ -1,0 +1,52 @@
+Design a UI for E-Commerce
+    # Landing Page (Home Page)
+        search option
+        category's
+            Mobile
+            Cloths
+            Electronics
+        carousel (Add)
+        top treading goods
+    # Customer Area
+        Details
+        Orders
+        Invoice (Future)
+    # User Login 
+    # User Sign Up
+        Name
+        Address
+        Gender
+        Date of Birth
+        State
+        City
+        Pincode
+        Email Id
+        Mobile No
+
+    # Search Page(Product-search Page)
+        Filter
+            Prices Range
+            Brand
+            Customer Rating 
+            GST Invoice Available
+            OFFERS
+            Stock Available (Exclude out of stock)
+            DISCOUNT
+            Pagination
+        Search Product UI
+    # Single Product View
+        Images (small) and one main image
+        Name 
+        Rating
+        Prices
+        Off Prices
+        Description About product
+        Add to cart and Buy Now
+    # Cart 
+        List Of Product
+        Add/Remove More Quantity 
+        Remove Product
+        Total 
+    # Pay Now (Payment Integration)
+
+
