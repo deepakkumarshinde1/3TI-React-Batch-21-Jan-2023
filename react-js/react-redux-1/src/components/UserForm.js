@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { saveUser, updateInput } from "../redux/action";
+import { saveUser, updateInput } from "../redux/UserReducerSlice";
 
 let UserForm = () => {
   //useSelector => get states
