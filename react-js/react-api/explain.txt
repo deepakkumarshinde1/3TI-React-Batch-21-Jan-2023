@@ -1,0 +1,6 @@
+# Create a weather app with react redux-toolkit
+# Service File (http request)
+# Create perfect UI for Application
+
+# Show relevant result as main view
+# rest all in table
