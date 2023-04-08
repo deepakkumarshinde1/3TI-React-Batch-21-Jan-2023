@@ -4,3 +4,29 @@
 
 # Show relevant result as main view
 # rest all in table
+
+
+# redux
+    store 
+    reducer
+    action
+    dispatch
+
+    combineReducer
+    Provider
+
+# reduxjs/toolkit
+    store
+    slice
+        name
+        initialState
+        reducers:{
+            actionMethod:(state,action){
+
+            }
+        }        
+    combineReducer
+    Provider
+# react redux
+    useDispatch(action)
+    useSelector()
