@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setWeatherDetails,
+  setWeatherList,
+} from "../redux/weatherReducerSlice";
 const WeatherHome = () => {
-  let [weatherList, setWeatherList] = useState([]);
-  let [weatherDetails, setWeatherDetails] = useState(null);
+  let dispatch = useDispatch();
+  let { weatherList, weatherDetails } = useSelector((state) => state.weather); // get updated state
+
   let getWeatherDetails = async (event) => {
     let value = event.target.value;
     if (event.keyCode === 13 && value !== "") {
-      let isFound = weatherList.findIndex((details) => {
+      let isFound = weatherList.findIndex((details, index) => {
         return details.name.toLowerCase() === value.toLowerCase();
       });
 
@@ -18,29 +22,29 @@ const WeatherHome = () => {
       switch (Number(data.cod)) {
         case 404:
           alert("City Not Found");
-          setWeatherDetails(null);
+          dispatch(setWeatherDetails(null)); // dispatch(action(payload))
           break;
 
         case 200:
-          setWeatherDetails(data);
+          dispatch(setWeatherDetails(data)); // dispatch(action(payload))
           if (isFound === -1)
-            setWeatherList([...weatherList, { ...data }]); // adding in list
+            //adding new record
+            dispatch(setWeatherList({ data })); // dispatch(action(payload))
+          // dispatch(action) // adding in list
           else {
-            weatherList[isFound] = { ...data };
-            setWeatherList([...weatherList]);
+            // updating old record
+            dispatch(setWeatherList({ isFound, data })); // dispatch(action)
           }
           break;
 
-        default:
+        default: // dispatch(action)
           alert("something went wrong, try again");
-          setWeatherDetails(null);
+          dispatch(setWeatherDetails(null));
           break;
       }
     }
   };
-  useEffect(() => {
-    //getWeatherDetails();
-  }, []);
+
   return (
     <>
       <input type="text" onKeyUp={getWeatherDetails} />
@@ -54,6 +58,35 @@ const WeatherHome = () => {
           <p>Max Temp:{weatherDetails.main.temp_max} deg/cel</p>
         </div>
       ) : null}
+
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          border: "1px solid black",
+        }}
+      >
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>City</th>
+            <th>Temp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {weatherList.map((cityDetails, index) => {
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>
+                  {cityDetails.name} {cityDetails.sys.country}
+                </td>
+                <td>{cityDetails.main.temp}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 };
