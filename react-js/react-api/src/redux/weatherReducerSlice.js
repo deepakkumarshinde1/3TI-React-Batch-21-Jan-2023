@@ -20,10 +20,18 @@ const WeatherReducerSlice = createSlice({
         state.weatherList = _weatherList;
       }
     },
+    saveWeatherData: (state, action) => {
+      console.log(action.payload);
+    },
+    getWeatherDetails: () => {},
   },
 });
 
 export default WeatherReducerSlice;
 
-export const { setWeatherDetails, setWeatherList } =
-  WeatherReducerSlice.actions;
+export const {
+  setWeatherDetails,
+  setWeatherList,
+  saveWeatherData,
+  getWeatherDetails,
+} = WeatherReducerSlice.actions;

@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getWeatherDetails,
   setWeatherDetails,
   setWeatherList,
 } from "../redux/weatherReducerSlice";
+import { useEffect } from "react";
 const WeatherHome = () => {
   let dispatch = useDispatch();
   let { weatherList, weatherDetails } = useSelector((state) => state.weather); // get updated state
 
-  let getWeatherDetails = async (event) => {
+  let getDetails = async (event) => {
     let value = event.target.value;
     if (event.keyCode === 13 && value !== "") {
       let isFound = weatherList.findIndex((details, index) => {
@@ -45,9 +47,13 @@ const WeatherHome = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(getWeatherDetails());
+  }, []);
+
   return (
     <>
-      <input type="text" onKeyUp={getWeatherDetails} />
+      <input type="text" onKeyUp={getDetails} />
       <hr />
       {weatherDetails ? (
         <div>
