@@ -33,19 +33,27 @@
  
 
 # redux-saga
-    # call
-    # put
-    # takeEvery
-    # takeLatest
-    # all
+    # call ==> run a api call
+    # put ==> dispatch data to redux
+    # takeEvery ==> 1,2,3,4 => 1,2,3,4 h , ht , htm , html
+    # takeLatest ==> 1,2,3,4 => 4 html
+    # all => runs different api call parallel
 
 
     Step-1
         Create a service
     Step-2
         Handel Service
+        
 # pure-component
     memo/useMemo/useCallback
 # Mixings
 
 # testing application
+
+# axios
+    .get(url)
+    .post(url,{data})
+    .put(url, {data})
+    .delete(url)
+
