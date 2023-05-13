@@ -30,3 +30,22 @@
 # react redux
     useDispatch(action)
     useSelector()
+ 
+
+# redux-saga
+    # call
+    # put
+    # takeEvery
+    # takeLatest
+    # all
+
+
+    Step-1
+        Create a service
+    Step-2
+        Handel Service
+# pure-component
+    memo/useMemo/useCallback
+# Mixings
+
+# testing application

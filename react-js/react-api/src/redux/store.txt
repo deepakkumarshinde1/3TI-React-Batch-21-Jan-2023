@@ -1,12 +1,12 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { reducer } from "./combineReducer";
-import { watcherSaga } from "./saga/sagaConfig";
 import createSagaMiddleware from "redux-saga";
+import { reducer } from "./combineReducer";
+import { rootSaga } from "./saga/rootSaga";
 
 let sagaMiddleware = createSagaMiddleware();
 let store = configureStore({
   reducer,
   middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware],
 });
-sagaMiddleware.run(watcherSaga);
+sagaMiddleware.run(rootSaga);
 export default store;

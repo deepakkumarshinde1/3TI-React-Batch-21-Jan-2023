@@ -1,0 +1,7 @@
+react hooks
+    useState
+    useEffect
+    useRef ==> store reference of elements
+
+
+    create own element ==> component (ref)

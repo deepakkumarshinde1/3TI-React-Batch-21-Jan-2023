@@ -1,0 +1,8 @@
+change from style = "background-color:red; color:red"
+change to  style={{ "background-color":"red", color:"red" }}
+
+change from class=" bg-danger"
+change to className ="bg-danger"
+
+change from for="labelName"
+change to htmlFor="labelName"

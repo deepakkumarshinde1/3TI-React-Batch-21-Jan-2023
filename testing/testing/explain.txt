@@ -1,0 +1,23 @@
+React ==> Jest (testing lib)
+
+# Why to test ?
+    # to catch bug.
+    # Quality Product
+    # Serve Testing doc
+    # Application confidence
+
+# Type ?
+    Unit Testing ==> Small Code Button your to test test function
+    Functional Testing ==> input + button
+    Integrated testing ==> component1 + component2
+
+    E2E ==>
+
+# React-Testing-Lib ?
+    # works on jest.
+
+# Create TodoList
+
+# npm run test 
+
+

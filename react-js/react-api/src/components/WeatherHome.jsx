@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getWeatherDetails,
-  setWeatherDetails,
-  setWeatherList,
-} from "../redux/weatherReducerSlice";
+import { getProductAPI, getWeatherDetails } from "../redux/weatherReducerSlice";
 import { useEffect } from "react";
+import axios from "axios";
 const WeatherHome = () => {
   let dispatch = useDispatch();
-  let { weatherList, weatherDetails } = useSelector((state) => state.weather); // get updated state
+  let { weatherList, weatherDetails, productList } = useSelector(
+    (state) => state.weather
+  ); // get updated state
 
   let getDetails = async (event) => {
     let value = event.target.value;
@@ -16,43 +15,33 @@ const WeatherHome = () => {
         return details.name.toLowerCase() === value.toLowerCase();
       });
 
-      let city = value;
-      let API_KEY = "417e5e47e007f7938b48ffa2581405b0";
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-      let response = await fetch(url);
-      let data = await response.json();
-      switch (Number(data.cod)) {
-        case 404:
-          alert("City Not Found");
-          dispatch(setWeatherDetails(null)); // dispatch(action(payload))
-          break;
+      dispatch(getWeatherDetails({ value, isFound }));
 
-        case 200:
-          dispatch(setWeatherDetails(data)); // dispatch(action(payload))
-          if (isFound === -1)
-            //adding new record
-            dispatch(setWeatherList({ data })); // dispatch(action(payload))
-          // dispatch(action) // adding in list
-          else {
-            // updating old record
-            dispatch(setWeatherList({ isFound, data })); // dispatch(action)
-          }
-          break;
-
-        default: // dispatch(action)
-          alert("something went wrong, try again");
-          dispatch(setWeatherDetails(null));
-          break;
-      }
+      // try {
+      //   let city = value;
+      //   let API_KEY = "417e5e47e007f7938b48ffa2581405b0";
+      //   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+      //   let { data } = await axios.get(url);
+      //   if (isFound === -1)
+      //     dispatch(setWeatherList({ data })); // dispatch(action(payload))
+      //   else {
+      //     // updating old record
+      //     dispatch(setWeatherList({ isFound, data })); // dispatch(action)
+      //   }
+      // } catch (error) {
+      //   alert("city not found");
+      //   dispatch(setWeatherDetails(null));
+      // }
     }
   };
 
-  useEffect(() => {
-    dispatch(getWeatherDetails());
-  }, []);
+  let getProductList = () => {
+    dispatch(getProductAPI());
+  };
 
   return (
     <>
+      <button onClick={getProductList}>Get Product</button>
       <input type="text" onKeyUp={getDetails} />
       <hr />
       {weatherDetails ? (
@@ -93,6 +82,12 @@ const WeatherHome = () => {
           })}
         </tbody>
       </table>
+
+      <ul>
+        {productList.map((product, index) => {
+          return <li key={index}>{product.title}</li>;
+        })}
+      </ul>
     </>
   );
 };
